@@ -9,9 +9,13 @@ export class Home extends React.Component {
     super(props);
   }
 
+  public test(str: string) {
+    alert(str);
+  }
+
   public render() {
     return (
-      <SearchBar />
+      <SearchBar submit={this.test} />
     );
   }
 }
