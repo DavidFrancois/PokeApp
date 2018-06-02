@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { SearchBar } from '../searchBar/searchBar';
+
 import './home.css';
 
 export class Home extends React.Component {
@@ -9,7 +11,7 @@ export class Home extends React.Component {
 
   public render() {
     return (
-      <h1> Home </h1>
+      <SearchBar />
     );
   }
 }
