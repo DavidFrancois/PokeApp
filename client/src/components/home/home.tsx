@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import * as PokeService from '../../services/pokemon';
 import { SearchBar } from '../searchBar/searchBar';
 
 import './home.css';
@@ -9,14 +10,12 @@ export class Home extends React.Component {
     super(props);
   }
 
-  public performSearch(str: string): Promise<string | void> {
-    return fetch("https://pokeapi.co/api/v2/pokemon/" + str + '/', {
-      method: "GET",
-    }).then((res) => {
-      return res.json();
-    }, (error) => {
-      alert(error.message)
-    });
+  public performSearch(str: string) {
+    alert(str);
+    PokeService.getPokemon(str)
+      .then((data) => {
+        alert(data);
+      });
   }
 
   public render() {
