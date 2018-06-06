@@ -7,6 +7,7 @@
 - Last tweets
   - See how to use twitter API
   - Manage display
+- Access via specific url for bookmark : .../pokemon/name/details
   
 ## Data management
 
@@ -17,7 +18,7 @@
 ## Search Engine
  
 - Handle not found and proposals
-- If enough time : Auto-complete
+- If enough time : Auto-complete or live proposals
 
 # Server
 
