@@ -14,8 +14,8 @@ class App extends React.Component {
       <Switch>
         {/* Router only support one child element, so wrap routes in a div */}
         <div>
-          <Route exact={true} path='/' component={Login}/>
-          <Route path='/home' component={Home}/>
+          <Route  path='/login' component={Login}/>
+          <Route path='/' exact={true} component={Home}/>
         </div>
       </Switch>
     );

@@ -5,7 +5,7 @@ import './login.css';
 
 export class Login extends React.Component {
   public state = {
-    redirect: false
+    redirect: true
   }
 
   constructor(props: any){
@@ -20,7 +20,7 @@ export class Login extends React.Component {
 
   public renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/target' />
+      return <Redirect to='/home' />
     } else {
       return null
     }
@@ -29,7 +29,6 @@ export class Login extends React.Component {
   public render() {
       return (
         <div className="offset-md-4 col-md-4 wrapper">
-          { this.setRedirect }
           <div className="user-form">
             <h1 className="title text-format">Pick a Username</h1>
             <input type="text" id="username" className="input-username text-format" />
