@@ -16,6 +16,7 @@ export class Detail extends React.Component<{ pokemon: any }, {}> {
           <span> ID: { this.props.pokemon.id } </span>
           <span> Height: { this.props.pokemon.height } </span>
           <span> Weight: { this.props.pokemon.weight } </span>
+          <img src={this.props.pokemon.sprites.front_default} alt="front_default"/>
         </div>
       );
     }
