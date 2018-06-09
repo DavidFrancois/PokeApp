@@ -4,6 +4,6 @@ import * as HttpService from './http';
 
 const pokeApiUrl = "https://pokeapi.co/api/v2/";
 
-export const getPokemon = (str: string): Promise<JSON | void> => {
-  return HttpService.get(pokeApiUrl + "pokemon/" + str + "/");
+export const getPokemon = (str: string): Promise<any> => {
+  return HttpService.get(pokeApiUrl + "pokemon/" + str);
 }

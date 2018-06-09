@@ -1,6 +1,6 @@
 // TODO : Set default Headers etc
 
-export const get = (url: string): Promise<JSON | void> => {
+export const get = (url: string): Promise<any> => {
   return fetch(url, {
     method: "GET",
   }).then((res) => {
