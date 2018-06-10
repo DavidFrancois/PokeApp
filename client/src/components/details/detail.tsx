@@ -1,26 +1,46 @@
 import * as React from 'react';
 
-import './detail.css';
+import { RouteComponentProps } from 'react-router-dom';
+import * as PokeService from '../../services/pokemon';
 
-export class Detail extends React.Component<{ pokemon: any }, {}> {
+
+import './detail.css';
+interface IHomeProps extends RouteComponentProps<any> {
+}
+
+export class Detail extends React.Component<IHomeProps, { pokemon: any }> {
   constructor(props: any){
     super(props);
+    this.state = { pokemon: null };
     this.pokeInfos = this.pokeInfos.bind(this);
+    this.getDetails = this.getDetails.bind(this);
   }
 
+  public componentWillMount() {
+    this.getDetails();
+  }
+
+  public getDetails() {
+    PokeService.getPokemon(this.props.match.params.pokemon)
+      .then((data) => {
+        this.setState({ pokemon: data });
+      });
+  }
+
+
   public pokeInfos() {
-    if (this.props.pokemon) {
+    if (this.state.pokemon != null ) {
       return (
         <div>
-          <h1> Name: { this.props.pokemon.name } </h1>
-          <span> ID: { this.props.pokemon.id } </span>
-          <span> Height: { this.props.pokemon.height } </span>
-          <span> Weight: { this.props.pokemon.weight } </span>
-          <img src={this.props.pokemon.sprites.front_default} alt="front_default"/>
+          <h1> Name: { this.state.pokemon.name } </h1>
+          <span> ID: { this.state.pokemon.id } </span>
+          <span> Height: { this.state.pokemon.height } </span>
+          <span> Weight: { this.state.pokemon.weight } </span>
+          <img src={this.state.pokemon.sprites.front_default} alt="front_default"/>
         </div>
       );
     }
-    return <h1> No pokemon Yet</h1>
+    return <h1> Loading Ressource</h1>
   }
 
   public render() {
