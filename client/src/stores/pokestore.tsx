@@ -14,7 +14,7 @@ class PokeStore {
 
   // Emit only newly added pokemons or ALL pokemons ?
   public addPokemons(pokemons: string[]) {
-    this.pokemons.concat(pokemons);
+    this.pokemons = this.pokemons.concat(pokemons);
     for (const listener of this.listeners) {
       listener(pokemons);
     }
