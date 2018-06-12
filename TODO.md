@@ -14,6 +14,7 @@
 - Prefetch infos about pokemon 
   - Prefetch strategy : Simple Http request or Web Worker
   - Keep data in memory ? How to manage it properly w/ react (in app memory, local Storage etc) define best strategy 
+- Defines types
   
 ## Search Engine
  
