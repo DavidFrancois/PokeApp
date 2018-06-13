@@ -1,41 +1,45 @@
 import * as React from 'react';
 
-import { RouteComponentProps } from 'react-router-dom';
 import * as PokeService from '../../services/pokemon';
 
 
 import './detail.css';
-interface IHomeProps extends RouteComponentProps<any> {
-}
 
-export class Detail extends React.Component<IHomeProps, { pokemon: any }> {
+
+export class Detail extends React.Component<{ poke: string }, { pokemon: any }> {
   constructor(props: any){
     super(props);
     this.state = { pokemon: null };
-    this.pokeInfos = this.pokeInfos.bind(this);
-    this.getDetails = this.getDetails.bind(this);
   }
 
-  public componentWillMount() {
+  public componentDidMount() {
     this.getDetails();
   }
 
-  public getDetails() {
-    PokeService.getPokemon(this.props.match.params.pokemon)
+  public getDetails = (): void => {
+    PokeService.getPokemon(this.props.poke)
       .then((data) => {
         this.setState({ pokemon: data });
       });
   }
 
 
-  public pokeInfos() {
+  public pokeTypes = () => {
+    return (
+      this.state.pokemon.types.map((t: any) => <li key={t.type.slot}>{t.type.name}</li>)
+    );
+  }
+
+  public pokeInfos = () => {
     if (this.state.pokemon != null ) {
       return (
         <div>
           <h1> Name: { this.state.pokemon.name } </h1>
-          <span> ID: { this.state.pokemon.id } </span>
-          <span> Height: { this.state.pokemon.height } </span>
-          <span> Weight: { this.state.pokemon.weight } </span>
+          <br/>
+          <p> ID: { this.state.pokemon.id } </p>
+          <p> Height: { this.state.pokemon.height } </p>
+          <p> Weight: { this.state.pokemon.weight } </p>
+          <ul>{ this.pokeTypes() }</ul>
           <img src={this.state.pokemon.sprites.front_default} alt="front_default"/>
         </div>
       );
