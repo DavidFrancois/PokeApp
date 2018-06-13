@@ -1,33 +1,42 @@
 import * as React from 'react';
 
-import * as PokeService from '../../services/pokemon';
+import './home.css';
+import globalStore from '../../stores/globalstore';
 import { Detail } from '../details/detail';
+import { SearchResult } from '../searchResults/searchResult';
 import { SearchBar } from '../searchBar/searchBar';
 
-import './home.css';
-
-export class Home extends React.Component<{}, {currPokemon: any }> {
+export class Home extends React.Component<{}, { search: string, currPokemon: string }> {
 
   constructor(props: any){
     super(props);
-    this.state = { currPokemon: null };
-    this.performSearch = this.performSearch.bind(this);
+    this.state = { search: '', currPokemon: '' };
   }
 
-  public performSearch(str: string) {
-    PokeService.getPokemon(str)
-      .then((data) => {
-        this.setState({currPokemon: data});
-      });
+  public performSearch = (str: string) => {
+    globalStore.setState("search");
+    this.setState({search: str });
+  }
+
+  public seeDetails = (str: string) => {
+    globalStore.setState("detail");
+    this.setState({currPokemon: str });
   }
 
   public render() {
     return (
-      // Render can only return 1 child
       <div>
-        <SearchBar submit={this.performSearch} />
+        <header>
+          <SearchBar performSearch={this.performSearch} />
+        </header>
         <main>
-          <Detail pokemon={this.state.currPokemon} />
+          {globalStore.getState() === "search" &&
+            <SearchResult search={this.state.search} seeDetail={this.seeDetails} />
+          }
+
+          {globalStore.getState() === "detail" &&
+            <Detail poke={this.state.currPokemon} />
+          }
         </main>
       </div>
     );
