@@ -3,13 +3,16 @@ class PokeStore {
   private pokemons: string[];
   private listeners: any[] = [];
 
+
   constructor (initialState: string[]) {
     this.pokemons = initialState;
   }
 
-  // TS Lint forbid use of Function type
   public addListener(l: any) {
     this.listeners.push(l);
+
+    // For components not yet mounted, hazardous, should be secured;
+    l(this.pokemons);
   }
 
   // Emit only newly added pokemons or ALL pokemons ?
