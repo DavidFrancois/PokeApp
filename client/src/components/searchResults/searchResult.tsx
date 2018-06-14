@@ -11,7 +11,7 @@ export class SearchResult extends React.Component<{ search: string, seeDetail: a
   }
 
   public componentDidMount () {
-    pokeStore.addListener((data: string[]) => {
+    pokeStore.addPokeNamesListener((data: string[]) => {
       this.suggest(data);
     });
   }
