@@ -1,0 +1,39 @@
+.user-form {
+  margin: auto;
+  height: 33vh;
+  width: 100%;
+  text-align: center;
+}
+
+.input-username {
+  width: 100%;
+  background: transparent;
+  text-align: center;
+  outline: 0;
+  border: none;
+  border-bottom: solid white 2px;
+}
+
+.text-format {
+  color: white;
+  font-size: 5vh;
+  font-weight: 100;
+}
+
+.btn-chat {
+  margin-top: 2vh;
+}
+
+.btn-chat:hover {
+  color: #E9B479;
+  background-color: white;
+  border-radius: 0.1em;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
