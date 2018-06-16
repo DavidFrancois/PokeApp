@@ -1,21 +1,21 @@
 import * as React from 'react';
-import '../searchBar/searchBar.css';
+import './css/searchBar.css';
 
-type SearchBarProps = {
-  setSearched: any
+interface ISearchBarProps  {
+  setSearched: any;
 }
 
-type SearchBarState = {
+interface ISearchBarState {
   search: string;
 }
 
-export default class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
+export default class SearchBar extends React.Component<ISearchBarProps, ISearchBarState> {
 
-  getSearch = () => this.state.search;
+  public getSearch = () => this.state.search;
 
-  handleChange = (event: any) => this.setState({ search: event.target.value });
+  public handleChange = (event: any) => this.setState({ search: event.target.value });
 
-  handleClick = (event: any) => {
+  public handleClick = (event: any) => {
     this.props.setSearched(this.getSearch())
     event.preventDefault();
   }

@@ -1,22 +1,22 @@
 import * as React from 'react';
 
-import '../details/detail.css';
+import './css/detail.css';
 
-type PokeSheetProps = {
+interface IPokeSheetProps {
   pokemon: any,
   isFetching: boolean,
   found: string,
   types: any[]
 }
 
-export default class PokeSheet extends React.Component<PokeSheetProps> {
+export default class PokeSheet extends React.Component<IPokeSheetProps> {
   // public getStats = (name: string) => {
   //   if (this.state.pokeTypes.length === 0) return <div>Loading</div>
   //   return (Array.from(this.state.pokeTypes[name].getStatMap())
   //     .map(arr =><span>{arr[0]} :  {arr[1]}</span>))
   // }
 
-  typeStats = () => (
+  public typeStats = () => (
     <div>
       { this.props.types.filter((t: any) => this.props.pokemon.types.indexOf(t.name) >= 0 )
         .map((t: any) => (
@@ -34,10 +34,10 @@ export default class PokeSheet extends React.Component<PokeSheetProps> {
     </div>
   )
 
-  pokeStats = () =>
+  public pokeStats = () =>
     (
       <ul>
-        <li> height : {this.props.pokemon.stats.height} </li>
+        <li>height : {this.props.pokemon.stats.height} </li>
         <li>weight: {this.props.pokemon.stats.weight}</li>
         <li>hp: {this.props.pokemon.stats.hp}</li>
         <li>attack: {this.props.pokemon.stats.attack}</li>
@@ -48,8 +48,7 @@ export default class PokeSheet extends React.Component<PokeSheetProps> {
       </ul>
     );
 
-  pokeInfos = () => {
-    console.log(this.props.types);
+  public pokeInfos = () => {
       return (
         <div>
           <h1> Name: { this.props.pokemon.name } </h1>
@@ -62,7 +61,7 @@ export default class PokeSheet extends React.Component<PokeSheetProps> {
       );
     }
 
-  render() {
+  public render() {
     return (
       <div className="offset-md-2 col-md-8">
         { this.props.isFetching === true &&

@@ -1,13 +1,13 @@
 export class PokeType {
-  private statAvg: Stats = {
-    "hp": 0,
-    "speed": 0,
+  private statAvg: IStats = {
     "attack": 0,
     "defense": 0,
-    "sp_def": 0,
+    "height": 0,
+    "hp": 0,
     "sp_atk": 0,
-    "weight": 0,
-    "height": 0
+    "sp_def": 0,
+    "speed": 0,
+    "weight": 0
   }
 
   constructor (private name: string) {
@@ -30,13 +30,13 @@ export class PokeType {
     return this.name;
   }
 
-  public getStatMap(): Stats {
+  public getStatMap(): IStats {
     return this.statAvg;
   }
 }
 
 
-export interface Stats {
+export interface IStats {
   hp?: number,
   defense?: number,
   speed?: number,

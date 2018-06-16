@@ -1,5 +1,5 @@
-import { PokeType } from '../models/type';
 import { Action} from 'redux';
+import { PokeType } from '../models/type';
 
 
 // Actions types
@@ -40,6 +40,7 @@ export const receivePoketypes = () => {
 }
 
 export const setPokemonDetails = (pokemon: any) => {
+
   return { type: SET_POKEMON_DETAILS, pokemon }
 }
 

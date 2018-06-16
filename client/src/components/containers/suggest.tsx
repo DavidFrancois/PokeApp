@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
-import SuggestList from "../presentational/suggestList";
+
 import { setFound } from "../../actions/actionTypes";
+import SuggestList from "../presentational/suggestList";
 
 const mapStateToProps = (state: any) => {
   return {

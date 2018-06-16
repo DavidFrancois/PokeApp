@@ -1,18 +1,21 @@
 import * as React from 'react';
 
-import './home.css';
 import { connect } from "react-redux";
-import SearchPokemon from '../containers/searchPokemons';
-import Suggest from '../containers/suggest';
 import Detail from '../containers/detail';
 
-type HomeProps = {
+import SearchPokemon from '../containers/searchPokemons';
+import Suggest from '../containers/suggest';
+
+import './home.css';
+
+
+interface IHomeProps {
   searching: boolean,
   searched: string,
   found: string
 }
 
-class Home extends React.Component<HomeProps> {
+class Home extends React.Component<IHomeProps> {
 
   public render() {
     return (
@@ -34,13 +37,12 @@ class Home extends React.Component<HomeProps> {
 }
 
 const mapStateToProps = (state: any) => ({
-    searching: state.global.searching,
-    searched: state.global.searched,
-    found: state.global.found
+  found: state.global.found,
+  searched: state.global.searched,
+  searching: state.global.searching
 })
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps
   null
 )(Home);

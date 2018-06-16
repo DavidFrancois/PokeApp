@@ -3,9 +3,9 @@ import PokeSheet from "../presentational/pokeSheet";
 
 const mapStateToProps = (state: any) => {
   return {
-    pokemon: state.pokemon.pokemons.filter((p: any) => p.name === state.global.found)[0],
-    isFetching: state.pokemon.isFetching,
     found: state.global.found,
+    isFetching: state.pokemon.isFetching,
+    pokemon: state.pokemon.pokemons.filter((p: any) => p.name === state.global.found)[0],
     types: state.poketype.poketypes
   }
 }

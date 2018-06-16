@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
-import SearchBar from "../presentational/searchbar";
+
 import { setSearched } from "../../actions/actionTypes";
+import SearchBar from "../presentational/searchbar";
 
 const mapDispatchToProps = (dispatch: any) => ({
     setSearched: (search: string) => dispatch(setSearched(search))

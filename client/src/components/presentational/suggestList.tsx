@@ -1,11 +1,15 @@
 import * as React from 'react';
 ​
-type SuggestListProps = {
+interface ISuggestListProps {
   suggestions?: any,
   setFound?: any
 }
 
-export default class SuggestList extends React.Component<SuggestListProps> {
+interface ISuggestListState {
+  match: string;
+}
+
+export default class SuggestList extends React.Component<ISuggestListProps, ISuggestListState> {
 
   public suggestions = () => {
     return (

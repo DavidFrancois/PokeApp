@@ -7,18 +7,19 @@ import * as TypeService from './services/type';
 import Home from './components/home/home';
 
 import {
-  addPoketypes,
-  setPokemonDetails,
-  setPoketypeDetails,
   addPokemons,
-  requestPokemons,
+  addPoketypes,
   receivePokemons,
   receivePoketypes,
-  requestPoketypes} from './actions/actionTypes';
+  requestPokemons,
+  requestPoketypes,
+  setPokemonDetails,
+  setPoketypeDetails
+} from './actions/actionTypes';
 
 import { PokeType, StatsKeys } from './models/type';
 
-type AppProps = {
+interface IAppProps {
   isFetching: boolean,
   pokemons: any[],
   poketypes: any[],
@@ -33,7 +34,7 @@ type AppProps = {
 };
 
 
-class App extends React.Component<AppProps> {
+class App extends React.Component<IAppProps> {
 
   public componentDidMount() {
     this.fetchPokemons();
@@ -77,11 +78,11 @@ class App extends React.Component<AppProps> {
         stats: {
           attack: Number.parseInt(r.attack),
           defense: Number.parseInt(r.defense),
+          height:  Number.parseInt(r.height),
           hp: Number.parseInt(r.hp),
           sp_atk: Number.parseInt(r.sp_atk),
           sp_def: Number.parseInt(r.sp_def),
           speed: Number.parseInt(r.speed),
-          height:  Number.parseInt(r.height),
           weight:  Number.parseInt(r.weight)
         },
         types: r.types.map((t: any) => t.name)
@@ -130,14 +131,14 @@ class App extends React.Component<AppProps> {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  addPoketypes: (poketypes: PokeType[]) => dispatch(addPoketypes(poketypes)),
-  setPokemonDetails: (pokemon: any) => dispatch(setPokemonDetails(pokemon)),
-  setPoketypeDetails: (poketype: PokeType) => dispatch(setPoketypeDetails(poketype)),
   addPokemons: (pokemons: any[]) => dispatch(addPokemons(pokemons)),
-  reqPokemons: () => dispatch(requestPokemons()),
+  addPoketypes: (poketypes: PokeType[]) => dispatch(addPoketypes(poketypes)),
   recPokemons: () => dispatch(receivePokemons()),
   recPoketypes: () => dispatch(receivePoketypes()),
-  reqPoketypes: () => dispatch(requestPoketypes())
+  reqPokemons: () => dispatch(requestPokemons()),
+  reqPoketypes: () => dispatch(requestPoketypes()),
+  setPokemonDetails: (pokemon: any) => dispatch(setPokemonDetails(pokemon)),
+  setPoketypeDetails: (poketype: PokeType) => dispatch(setPoketypeDetails(poketype)),
 });
 
 
