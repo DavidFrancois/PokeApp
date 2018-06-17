@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import './css/suggestList.css';
 ​
 interface ISuggestListProps {
   suggestions?: any,
@@ -14,16 +16,16 @@ export default class SuggestList extends React.Component<ISuggestListProps, ISug
   public suggestions = () => {
     return (
       this.props.suggestions.map((match: string) =>
-        <li key={match} onClick={() => this.props.setFound(match)}> {match} </li>
+        <li key={match}  className="list-group-item list-group-item-action text-center" onClick={() => this.props.setFound(match)}> {match} </li>
       )
     );
   }
 
   public render() {
     return (
-      <div className="offset-md-2 col-md-8">
-        <ul>{this.suggestions()}</ul>
-      </div>
+      <ul className="offset-md-2 col-md-8 list-group">
+        {this.suggestions()}
+      </ul>
     );
   }
 
