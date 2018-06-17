@@ -10,11 +10,6 @@ interface IPokeSheetProps {
 }
 
 export default class PokeSheet extends React.Component<IPokeSheetProps> {
-  // public getStats = (name: string) => {
-  //   if (this.state.pokeTypes.length === 0) return <div>Loading</div>
-  //   return (Array.from(this.state.pokeTypes[name].getStatMap())
-  //     .map(arr =><span>{arr[0]} :  {arr[1]}</span>))
-  // }
 
   public typeStats = () => (
     <div>

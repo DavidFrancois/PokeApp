@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import PokeSheet from "../presentational/pokeSheet";
 
+
 const mapStateToProps = (state: any) => {
   return {
     found: state.global.found,

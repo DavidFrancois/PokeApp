@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import { setFound } from "../../actions/actionTypes";
 import SuggestList from "../presentational/suggestList";
+import { pushUrlQuery } from 'react-url-query';
 
 const mapStateToProps = (state: any) => {
   return {
@@ -12,7 +12,7 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  setFound: (name: string) => dispatch(setFound(name))
+  setFound: (name: string) => pushUrlQuery({ searchUrl: name })
 });
 
 const Suggest = connect(

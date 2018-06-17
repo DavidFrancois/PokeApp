@@ -5,6 +5,8 @@ import Detail from '../containers/detail';
 
 import SearchPokemon from '../containers/searchPokemons';
 import Suggest from '../containers/suggest';
+import { addUrlProps, UrlQueryParamTypes } from "react-url-query";
+import { setFound } from "../../actions/actionTypes";
 
 import './home.css';
 
@@ -12,10 +14,25 @@ import './home.css';
 interface IHomeProps {
   searching: boolean,
   searched: string,
-  found: string
+  found: string,
+  searchUrl: string,
+  setFound: any
 }
 
+const urlPropsQueryConfig = {
+  searchUrl: { type: UrlQueryParamTypes.string }
+};
+
+
 class Home extends React.Component<IHomeProps> {
+
+  public searchFromUrl = () => {
+    this.props.setFound(this.props.searchUrl);
+  }
+
+  public componentWillMount() {
+    if (this.props.searchUrl && this.props.searchUrl !== "") this.searchFromUrl()
+  }
 
   public render() {
     return (
@@ -42,7 +59,11 @@ const mapStateToProps = (state: any) => ({
   searching: state.global.searching
 })
 
-export default connect(
+const mapDispatchToProps = (dispatch: any) => ({
+  setFound: (name: string) => dispatch(setFound(name))
+});
+
+export default addUrlProps(urlPropsQueryConfig)(connect(
   mapStateToProps,
-  null
-)(Home);
+  mapDispatchToProps
+)(Home));

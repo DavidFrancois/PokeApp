@@ -4,7 +4,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { RouterToUrlQuery } from 'react-url-query';
+
 
 import pokeApp from './reducers/reducers';
 import App from './App';
@@ -15,11 +17,13 @@ import registerServiceWorker from './registerServiceWorker';
 const store = createStore(pokeApp);
 
 ReactDOM.render((
-  <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <Router>
+        <RouterToUrlQuery>
+          <App />
+        </RouterToUrlQuery>
+      </Router>
     </Provider>
-  </BrowserRouter>
 ), document.getElementById('root'))
 
 registerServiceWorker();
