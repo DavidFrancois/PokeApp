@@ -1,9 +1,7 @@
 // TODO : Set default Headers etc
 
-const pokeApiUrl = "https://pokeapi.co/api";
-
 export const get = (uri: string): Promise<any> => {
-  return fetch(pokeApiUrl + uri, {
+  return fetch(uri, {
     method: 'GET'
   })
   .then((res) => {
