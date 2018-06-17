@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { getTweets } from './../../services/tweets';
+import TweetEmbed from 'react-tweet-embed';
 
 import './css/detail.css';
 
@@ -9,7 +11,24 @@ interface IPokeSheetProps {
   types: any[]
 }
 
-export default class PokeSheet extends React.Component<IPokeSheetProps> {
+interface IPokeSheetState {
+  tweetIds: string[];
+}
+
+export default class PokeSheet extends React.Component<IPokeSheetProps, IPokeSheetState> {
+
+  public componentWillMount () {
+    getTweets(this.props.found).then((data: any) => {
+      this.setState({ tweetIds: data.statuses.map((s: any) => s.id_str)});
+    });
+  }
+
+  public tweet = () =>
+    (
+      <div className="offset-md-3 col-md-6">
+        { this.state.tweetIds.map((id: string) => <TweetEmbed id={id} />)}
+      </div>
+    )
 
   public pokeStats = () =>
     (
@@ -69,15 +88,15 @@ export default class PokeSheet extends React.Component<IPokeSheetProps> {
 
   public render() {
     return (
-    <div className="offset-md-2 col-md-8 card content-wrapper text-center">
+      <div className="offset-md-2 col-md-8 card content-wrapper text-center">
         { this.props.isFetching === true &&
             <span className="loader"></span>
             // <span>We're Loading Pokémon data</span>
         }
-        {
-          this.props.isFetching === false &&
-            <this.pokeInfos />
+        {this.props.isFetching === false &&
+          <this.pokeInfos />
         }
+        { this.state && this.state.tweetIds.length > 0 && <this.tweet />}
       </div>
     );
   }
