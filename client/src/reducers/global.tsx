@@ -1,7 +1,10 @@
 import {
   SET_SEARCHED,
-  SET_FOUND
+  SET_FOUND,
+  CHANGE_URL_FOUND
 } from '../actions/actionTypes';
+
+import {  pushUrlQuery } from 'react-url-query';
 
 
 const initialState = {
@@ -23,6 +26,13 @@ const global = (state: any = initialState, action: any) => {
         ...state,
         searching: false,
         found: action.name
+      }
+    case CHANGE_URL_FOUND:
+      pushUrlQuery({ pokemon: action.payload.encodedQuery.pokemon });
+      return {
+        ...state,
+        searching: false,
+        found: action.payload.encodedQuery.pokemon
       }
     default:
       return state

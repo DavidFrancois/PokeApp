@@ -1,7 +1,12 @@
 import { connect } from "react-redux";
 
 import SuggestList from "../presentational/suggestList";
-import { pushUrlQuery } from 'react-url-query';
+import {  urlPushAction } from 'react-url-query';
+
+const changeUrlFound = urlPushAction(
+  'CHANGE_URL_FOUND',
+  (query: any) => ({ pokemon: String(query.pokemon) })
+);
 
 const mapStateToProps = (state: any) => {
   return {
@@ -12,7 +17,9 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  setFound: (name: string) => pushUrlQuery({ searchUrl: name })
+  setFound: (name: string) => {
+    dispatch(changeUrlFound({ pokemon: name }));
+  }
 });
 
 const Suggest = connect(

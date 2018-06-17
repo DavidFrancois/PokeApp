@@ -12,7 +12,8 @@ export const RECEIVE_POKETYPES = 'RECEIVE_TYPES';
 export const SET_POKEMON_DETAILS = 'SET_POKEMON_DETAILS';
 export const SET_POKETYPE_DETAILS = 'SET_POKETYPE_DETAILS';
 export const SET_SEARCHED = 'SET_SEARCHED';
-export const SET_FOUND = 'SET_FOUND'
+export const SET_FOUND = 'SET_FOUND';
+export const CHANGE_URL_FOUND = 'CHANGE_URL_FOUND';
 
 
 // Actions creators

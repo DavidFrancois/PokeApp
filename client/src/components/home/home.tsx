@@ -15,23 +15,22 @@ interface IHomeProps {
   searching: boolean,
   searched: string,
   found: string,
-  searchUrl: string,
+  pokemon: string,
   setFound: any
 }
 
 const urlPropsQueryConfig = {
-  searchUrl: { type: UrlQueryParamTypes.string }
+  pokemon: { type: UrlQueryParamTypes.string }
 };
-
 
 class Home extends React.Component<IHomeProps> {
 
   public searchFromUrl = () => {
-    this.props.setFound(this.props.searchUrl);
+    this.props.setFound(this.props.pokemon);
   }
 
   public componentWillMount() {
-    if (this.props.searchUrl && this.props.searchUrl !== "") this.searchFromUrl()
+    if (this.props.pokemon && this.props.pokemon !== "") this.searchFromUrl()
   }
 
   public render() {
