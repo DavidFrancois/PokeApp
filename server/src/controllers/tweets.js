@@ -1,9 +1,8 @@
 const T = require('../twit');
 
 module.exports.get = (req, res) => {
-  console.log(req.params);
   T.get('search/tweets', { q: req.params.pokemon, count: 10 }, (err, data, response) => {
-    console.log(data);
+    if (err) res.status(err.statusCode).send(err.message);
     res.status(200).send(data);
   });
 }
