@@ -18,8 +18,15 @@ interface IPokeSheetState {
 export default class PokeSheet extends React.Component<IPokeSheetProps, IPokeSheetState> {
 
   public componentWillMount () {
+    this.fetchTweets();
+  }
+
+  public fetchTweets = () => {
     getTweets(this.props.found).then((data: any) => {
       this.setState({ tweetIds: data.statuses.map((s: any) => s.id_str)});
+    }).then(() => {
+      // Re Fetch tweets every 10 second, easy fast dev solution
+      setTimeout(() => this.fetchTweets(), 10000);
     });
   }
 
