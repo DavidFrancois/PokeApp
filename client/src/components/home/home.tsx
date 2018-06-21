@@ -1,12 +1,13 @@
 import * as React from 'react';
 
+import { addUrlProps, UrlQueryParamTypes } from "react-url-query";
 import { connect } from "react-redux";
+import { setFound } from "../../actions/actionTypes";
+
 import Detail from '../containers/detail';
 
 import SearchPokemon from '../containers/searchPokemons';
 import Suggest from '../containers/suggest';
-import { addUrlProps, UrlQueryParamTypes } from "react-url-query";
-import { setFound } from "../../actions/actionTypes";
 
 import './home.css';
 
@@ -34,7 +35,6 @@ class Home extends React.Component<IHomeProps> {
   }
 
   public render() {
-    console.log(this.props);
     return (
       <div>
         <header>

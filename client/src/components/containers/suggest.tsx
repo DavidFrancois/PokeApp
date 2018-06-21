@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
+import {  urlPushAction } from 'react-url-query';
 
 import SuggestList from "../presentational/suggestList";
-import {  urlPushAction } from 'react-url-query';
 
 const changeUrlFound = urlPushAction(
   'CHANGE_URL_FOUND',
